@@ -2,6 +2,7 @@
 View for a table https://declarator.org/office/589
 
 To start project run:  
+`pip install -r requirements.txt`  
 `python manage.py migrate`  
 `python manage.py runserver`
 
