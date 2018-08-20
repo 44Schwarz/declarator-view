@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load mptt_tags %}
+
+{% block title %}
+  Governmental bodies
+{% endblock %}
+
+{% block content %}
+  <div class="list-group ">
+    {% recursetree nodes %}
+      <a href="{% url 'declarator:office' node.id %}" class="list-group-item list-group-item-action">{{ node.name }}</a>
+    {% endrecursetree %}
+  </div>
+{% endblock %}

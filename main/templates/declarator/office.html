@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ name }}
+{% endblock %}
+
+{% block content %}
+  <table class="table">
+    <tr>
+      <th>Branch</th>
+      {% for year in years %}
+        <th>{{ year }}</th>
+      {% endfor %}
+    </tr>
+
+    {% for of, cases in data.items %}
+      <tr>
+        <td><a href="{% url 'declarator:office' of.id %}">{{ of.name }}</a></td>
+        {% for c in cases %}
+
+          {% if c == 'none' %}
+            <td></td>
+          {% elif c == 'blank' %}
+            <td><img src="{% static 'img/circle_blank.png'%}"></td>
+          {% elif c == 'half' %}
+            <td><img src="{% static 'img/circle_halffilled.png'%}"></td>
+          {% elif c == 'filled' %}
+            <td><img src="{% static 'img/circle_filled.png'%}"></td>
+          {% endif %}
+
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
